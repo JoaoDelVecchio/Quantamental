@@ -1,4 +1,5 @@
 Repositório do projeto para o desafio ITAU Quantamental.
+Autores: Bruno Franco, Jean Carlo amaral, João Matheus Del Vecchio.
 
 # Introdução
 
@@ -157,4 +158,5 @@ $$
 m_t = \prod_{i = t-N}^{t-1}{(1+r_i)^{\frac{252}{N}}} - 1
 $$
 
+Dessa forma, será este o valor esperado para uma certo criptomoeada que iremos utilizar na implementação.
 # Etapa 3
