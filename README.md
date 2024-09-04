@@ -57,7 +57,7 @@ Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar 
 
 Nesta etapa, nosso objetivo é estimar o *Retorno Esperado* e o *Risco Esperado* de uma determinada criptomoeda em um momento futuro $t$, utilizando as informações disponíveis até o instante $t-1$.
 
-### 2. **Estratégia 1**
+## 2. **Estratégia 1.1**
 Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como $[t-p, t-1]$.
 
 Essa estratégia baseia-se na *hipótese* de que o **retorno do ativo segue uma distribuição aproximadamente constante ao longo do tempo.** Portanto, o valor esperado dessa distribuição pode ser estimado pela média dos retornos passados.
@@ -109,7 +109,14 @@ Resultado da Otimização de parâmetros -
 Percebe-se que para essa etratégia, o período mais eficaz de trading foi de 1 dia para cada operação. Além disso, considerar em torno de 1 mês para realizar a média dos retornos mostrou-se mais eficaz.
 
 # Etapa 2
-Lembrando que:
+### **Introdução**
+
+O Objetivo da etapa 2 consiste, com base nos valores esperados calculados pela etapa 1, alocar um determinado percentual de um capital C em um conjunto de n possíveis ativos financeiros de risco de modo a maximizar  a relação Retorno_ajustado/Risco.
+
+## **Estratégia 2.1**
+A estratégia 2.1 consiste em aplicar um algoritmo genético para encontrar a melhor alocação perncentual de capital num conjunto de criptomoedas determinado
+
+Lembrando:
 - **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
 - **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
 - **Valor Esperado do Retorno Percentual:=** $m$
@@ -126,7 +133,6 @@ Relação entre ambos: $m = e^{\mu} - 1$ ,     $s^2 = e^{2\mu}(e^{\sigma^2} - 1)
 
 Assim,
 
-
 $$
 E[R_{t}] = \mu_t = 252 (\frac{1}{N} \sum_{i = t-N}^{t-1}{R_i}) = 252 \overline{R}
 $$
@@ -134,7 +140,6 @@ $$
 $$
 m_t = e^{\mu_t} - 1 = e^{252 \overline{R}} - 1 
 $$
-
 
 $$
 m_t = e^{\frac{252}{N} \sum{R_i}} - 1 
