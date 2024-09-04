@@ -15,3 +15,4 @@ MSE_{New}^2 = MSE^2 + (E[R_{t-1}] - R_{t-1})^2
 $$
 
 * **Problema:** Da forma como está praticamente todos os casos em que ou N ou x são um pouco grandes não retornam valores, por conta de algumas moedas que são muito recentes, gerando resultado NaN
+* **Discussão**: Por enquanto entretanto os valores que vem se mostrando mais eficazes são períodos de tranding de x = 1 dia levando em conta a média e desvio padrão dos ultimos 2 meses.
