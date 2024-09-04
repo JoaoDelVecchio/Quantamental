@@ -19,6 +19,8 @@ Repositório do projeto para o desafio ITAU Quantamental.
     3. BackTest da estratégia para avaliar os resultados
 > Na verdade seria interessante que ambas as duas primeiras etapas por si só tivessem seu próprio backtest
 > uma vez que para cada uma dessas fases haverá uma modelagem própria que deve ser avaliada.
+> 
+Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar algum algoritmo de **Filtering** entre a etapa 1 e a etapa 2. A ideia é que filtrar os valores esperados ajudaria a lidar com a alta volatilidade do mercado de CryptoMoedas
 
 # Referências
 
