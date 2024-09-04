@@ -51,12 +51,47 @@ Repositório do projeto para o desafio ITAU Quantamental.
 
 # Etapa 1
 
-1. **Introdução**
-   
-    A etapa 1 consiste em estimar o *Retorno Esperado* e o *Risco Esperado* de certa criptocurrency em determinado tempo $t$ utilizando as informações disponíveis em $t-1$
-    * Como primeira estratégia, e também acredito eu que mais simples, temos que o retorno esperado do ativo será igual a média do retorno deste ativo em determinado intervalo de tempo $[t-p, t-1]$
-        * Essa estratégia se baseia no conceito que o retorno do ativo segue uma distribuição aproximadamente constante ao longo do tempo. Logo o valor esperado dessa distribuição tende à média dos valores de nossa população, i.e. $E[R_t] = \frac{1}{N}\sum_{i= t-N}^{t-1}(R_i) = \overline{R}$
-        * De modo análogo temos que $\sigma_t^2 = \frac{1}{N-1}\sum_{i= t-N}^{t-1}(R_i - \overline{R})^2$
+### 1. **Introdução**
+
+Nesta etapa, nosso objetivo é estimar o *Retorno Esperado* e o *Risco Esperado* de uma determinada criptomoeda em um momento futuro \( t \), utilizando as informações disponíveis até o instante \( t-1 \).
+
+### 2. **Estratégia 1**
+Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como \([t-p, t-1]\).
+
+Essa estratégia baseia-se na *hipótese* de que o **retorno do ativo segue uma distribuição aproximadamente constante ao longo do tempo.** Portanto, o valor esperado dessa distribuição pode ser estimado pela média dos retornos passados.
+
+$$
+E[R_t] = \frac{1}{N}\sum_{i= t-N}^{t-1} R_i = \overline{R}
+$$
+
+Analogamente, a variância do retorno (que representa o risco) é dada por:
+
+$$
+\sigma_t^2 = \frac{1}{N-1}\sum_{i= t-N}^{t-1} (R_i - \overline{R})^2
+$$
+
+Importante lembrar que esse retorno é o logarítmico, embora ele seja muito próximo do retorno percentual para valores pequenos.
+
+- **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
+- **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
+
+Onde $X_t$ representa o valor do ativo no instante $t$
+
+Desse modo, temos o seguinte roteiro: Para determinada moeda, em determinado instante t, realizamos a média dos últimos N instantes. O valor esperado será igual a essa média.
+Além disso, calculamos a variância amostral desses q ultimos instantes, este será o valor esperado do risco.
+
+> Peceba que surge um hiperparâmetro - Qual a quantidade de instantes N que eu devo contabilizar na média?
+
+Embora uma quantidade maior eu esteja pegando teoricamente encontrando um valor mais preciso da média da distribuição temos que lembrar que a distribuição pode mudar, logo valores menores fazem com que consideremos apenas a teorica *distribuição mais recente*.
+
+Além disso, um pouco mais discreto, temoso hiperparâmetro que representa o intevalo de tempo que pretendemos realizar o trading. Chamaremos ele de T
+
+> Qual o intervalo de tempo T entre nossas operações?
+
+Para valores altos de T estamos provavelmente trabalhando com volatilidades menores. Entretanto, quanto maior o valor de T, menor será a nossa possibilidade de treinamento e backtesting pois menor será a nossa quantidade de dados disponíveis.
+
+A Aplicação desta estratégia foi feita [aqui]()
+
 
 # Etapa 2
 
