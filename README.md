@@ -23,28 +23,28 @@ Repositório do projeto para o desafio ITAU Quantamental.
 # Referências
 
 ### **Papers**
-* The best of two worlds: Forecasting high frequency volatility for cryptocurrencies and traditional currencies with Support Vector Regression
-* Intelligent forecasting with machine learning trading systems in chaotic intraday Bitcoin market
-* Reinforcement Learning for Quantitative Trading
-* Applying Artificial Intelligence in Cryptocurrency Markets: A Survey
-* Anticipating Cryptocurrency Prices Using Machine Learning
-* Trading and Arbitrage in Cryptocurrency Markets
-* AUTOMATED CRYPTOCURRENCIES PRICES PREDICTION USING MACHINE LEARNING
-* Cryptocurrency Trading Using Machine Learning
-* A deep Q-learning portfolio management framework for the cryptocurrency market
-* EXTREME CORRELATION IN CRYPTOCURRENCY MARKETS
-* Market Sentiment and an Overnight Anomaly
-* Seasonality, Trend-following, and Mean reversion in Bitcoin
-* Cryptocurrency trading: a comprehensive survey
+* [The best of two worlds: Forecasting high frequency volatility for cryptocurrencies and traditional currencies with Support Vector Regression](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Forecasting%20HFT%20volatility%20for%20crypto%20with%20SVM)
+* [Intelligent forecasting with machine learning trading systems in chaotic intraday Bitcoin market](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/forecasting%20with%20machine%20learning%20trading%20in%20chaotic%20intraday%20Bitcoin)
+* [Reinforcement Learning for Quantitative Trading](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Reinforcement%20Learning%20for%20Quantitative%20Trading)
+* [Applying Artificial Intelligence in Cryptocurrency Markets: A Survey](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Applying%20Artificial%20Intelligence%20in%20Cryptocurrency%20Markets)
+* [Anticipating Cryptocurrency Prices Using Machine Learning](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Anticipating%20Cryptocurrency%20Prices%20Using%20Machine%20Learning)
+* [Trading and Arbitrage in Cryptocurrency Markets](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Trading%20and%20Arbitrage)
+* [AUTOMATED CRYPTOCURRENCIES PRICES PREDICTION USING MACHINE LEARNING](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/AUTOMATED%20CRYPTOCURRENCIES%20PRICES%20PREDICTION%20USING%20ML)
+* [Cryptocurrency Trading Using Machine Learning](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Cryptocurrency%20Trading%20Using%20Machine%20Learning)
+* [A deep Q-learning portfolio management framework for the cryptocurrency market](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/A%20deep%20Q-learning%20portfolio%20management%20framework)
+* [EXTREME CORRELATION IN CRYPTOCURRENCY MARKETS](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/EXTREME%20CORRELATION%20IN%20CRYPTOCURRENCY%20MARKETS)
+* [Market Sentiment and an Overnight Anomaly](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Market%20Sentiment%20and%20an%20Overnight%20Anomaly)
+* [Seasonality, Trend-following, and Mean reversion in Bitcoin](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Seasonality%2C%20Trend-following%2C%20and%20Mean%20reversion%20in%20Bitcoin)
+* [Cryptocurrency trading: a comprehensive survey](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Cryptocurrency%20trading%20a%20comprehensive)
 
 ### **Livros**
-* Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos
-* Artificial Intelligence in Finance A Python-Based Guide. Hilpisch, Yves.
-* Introduction to the Economics and Mathematics of Financial Markets. ZAPATERO, Fernando.
-* MACHINE LEARNING FOR ASSET MANAGERS. LOPEZ DE PRADO, Marcos
-* Statistical Analysis of Financial Data. GENTLE, James.
-* Analysis of Financial Time Series. RUEY S. TSAY
-* THE ANALYSIS OF TIME SERIES AN INTRODUCTION. Chris Chatfield.
+* [Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos]()
+* [Artificial Intelligence in Finance A Python-Based Guide. Hilpisch, Yves.]()
+* [Introduction to the Economics and Mathematics of Financial Markets. ZAPATERO, Fernando.]()
+* [MACHINE LEARNING FOR ASSET MANAGERS. LOPEZ DE PRADO, Marcos]()
+* [Statistical Analysis of Financial Data. GENTLE, James.]()
+* [Analysis of Financial Time Series. RUEY S. TSAY]()
+* [THE ANALYSIS OF TIME SERIES AN INTRODUCTION. Chris Chatfield.]()
 
 ### Sites
 * [Awesome Systematic Trading Repository](https://github.com/paperswithbacktest/awesome-systematic-trading.git)
