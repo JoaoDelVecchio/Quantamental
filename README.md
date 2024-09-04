@@ -109,5 +109,47 @@ Resultado da Otimização de parâmetros -
 Percebe-se que para essa etratégia, o período mais eficaz de trading foi de 1 dia para cada operação. Além disso, considerar em torno de 1 mês para realizar a média dos retornos mostrou-se mais eficaz.
 
 # Etapa 2
+Lembrando que:
+- **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
+- **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
+- **Valor Esperado do Retorno Percentual:=** $m$
+- **Valor Esperado do Retorno Logartimico:=** $\mu$
+- **Risco Percentual:=** $s^2$
+- **Risco Logartimico:=** $\sigma^2$
+
+Relação entre ambos: $m = e^{\mu} - 1$ ,     $s^2 = e^{2\mu}(e^{\sigma^2} - 1)$
+
+* Por motivos práticos, para a etapa de otimização de portfólio vamos utilizar os valores percentuais.
+* Além disso, vamos considerar inicialmente o valor esperado do retorno anual de cada ativo (Podemos alterar isso depois)
+
+> Essa alteração deve ser feita em conjunto com a otimização de parâmetros da *Etapa 1*. Observe que inicialmente consideramos $x_{days} = 252$ e $N = maximo$.
+
+Assim,
+
+
+$$
+E[R_{t}] = \mu_t = 252 (\frac{1}{N} \sum_{i = t-N}^{t-1}{R_i}) = 252 \overline{R}
+$$
+
+$$
+m_t = e^{\mu_t} - 1 = e^{252 \overline{R}} - 1 
+$$
+
+
+$$
+m_t = e^{\frac{252}{N} \sum{R_i}} - 1 
+$$
+
+$$
+m_t = e^{\frac{252}{N} \sum{ln(1 + r_i)}} - 1
+$$
+
+$$
+m_t = e^{\sum{ln(1 + r_i)^{\frac{252}{N}}}} - 1 = \prod{(1+r_i)^{\frac{252}{N}}} - 1
+$$
+
+$$
+m_t = \prod_{i = t-N}^{t-1}{(1+r_i)^{\frac{252}{N}}} - 1
+$$
 
 # Etapa 3
