@@ -38,13 +38,13 @@ Repositório do projeto para o desafio ITAU Quantamental.
 * [Cryptocurrency trading: a comprehensive survey](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Papers/Cryptocurrency%20trading%20a%20comprehensive)
 
 ### **Livros**
-* [Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos]()
-* [Artificial Intelligence in Finance A Python-Based Guide. Hilpisch, Yves.]()
-* [Introduction to the Economics and Mathematics of Financial Markets. ZAPATERO, Fernando.]()
-* [MACHINE LEARNING FOR ASSET MANAGERS. LOPEZ DE PRADO, Marcos]()
-* [Statistical Analysis of Financial Data. GENTLE, James.]()
-* [Analysis of Financial Time Series. RUEY S. TSAY]()
-* [THE ANALYSIS OF TIME SERIES AN INTRODUCTION. Chris Chatfield.]()
+* [Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/Marcos%20Lopez%20%20Advances%20in%20Financial%20Machine%20Learning)
+* [Artificial Intelligence in Finance A Python-Based Guide. Hilpisch, Yves.](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/artificial-intelligence-in-finance-a-python-based-guide)
+* [Introduction to the Economics and Mathematics of Financial Markets. ZAPATERO, Fernando.](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/Caltech%20-%20Mathematical%20Models%20for%20Finance)
+* [MACHINE LEARNING FOR ASSET MANAGERS. LOPEZ DE PRADO, Marcos](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/MACHINE%20LEARNING%20FOR%20ASSET%20MANAGERS)
+* [Statistical Analysis of Financial Data. GENTLE, James.](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/statistical-analysis-of-financial-data)
+* [Analysis of Financial Time Series. RUEY S. TSAY](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/analysis-of-financial-time-series)
+* [THE ANALYSIS OF TIME SERIES AN INTRODUCTION. Chris Chatfield.](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Livros/the-analysis-of-time-series-an-introduction-5-ed)
 
 ### Sites
 * [Awesome Systematic Trading Repository](https://github.com/paperswithbacktest/awesome-systematic-trading.git)
