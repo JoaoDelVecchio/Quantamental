@@ -55,10 +55,10 @@ Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar 
 
 ### 1. **Introdução**
 
-Nesta etapa, nosso objetivo é estimar o *Retorno Esperado* e o *Risco Esperado* de uma determinada criptomoeda em um momento futuro \( t \), utilizando as informações disponíveis até o instante \( t-1 \).
+Nesta etapa, nosso objetivo é estimar o *Retorno Esperado* e o *Risco Esperado* de uma determinada criptomoeda em um momento futuro $t$, utilizando as informações disponíveis até o instante $t-1$.
 
 ### 2. **Estratégia 1**
-Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como \([t-p, t-1]\).
+Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como $[t-p, t-1]$.
 
 Essa estratégia baseia-se na *hipótese* de que o **retorno do ativo segue uma distribuição aproximadamente constante ao longo do tempo.** Portanto, o valor esperado dessa distribuição pode ser estimado pela média dos retornos passados.
 
@@ -86,16 +86,27 @@ Além disso, calculamos a variância amostral desses q ultimos instantes, este s
 
 Embora uma quantidade maior eu esteja pegando teoricamente encontrando um valor mais preciso da média da distribuição temos que lembrar que a distribuição pode mudar, logo valores menores fazem com que consideremos apenas a teorica *distribuição mais recente*.
 
-Além disso, um pouco mais discreto, temoso hiperparâmetro que representa o intevalo de tempo que pretendemos realizar o trading. Chamaremos ele de T
+Além disso, um pouco mais discreto, temoso hiperparâmetro que representa o intevalo de tempo que pretendemos realizar o trading. Chamaremos ele de $x_{days}$
 
-> Qual o intervalo de tempo T entre nossas operações?
+> Qual o intervalo de tempo $x_{days}$ entre nossas operações?
 
-Para valores altos de T estamos provavelmente trabalhando com volatilidades menores. Entretanto, quanto maior o valor de T, menor será a nossa possibilidade de treinamento e backtesting pois menor será a nossa quantidade de dados disponíveis.
+Para valores altos de $x_{days}$ estamos provavelmente trabalhando com volatilidades menores. Entretanto, quanto maior o valor de $x_{days}$, menor será a nossa possibilidade de treinamento e backtesting pois menor será a nossa quantidade de dados disponíveis.
 
 A Aplicação desta estratégia foi feita [aqui](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Etapa%201/Estrat%C3%A9gia%2001)
 
-Realizei uma otimização para encontrar os melhores valores dos hiperparâmetros acima.
+Realizei uma otimização força bruta para encontrar os melhores valores dos hiperparâmetros acima. Como métrica eu considerei a tupla de $(N,x_{days})$ que acarretasse em menor média de Erro Quadrático Médio (MSE) nas 20 moedas selecionadas, em todo o período de existência de cada uma.
 
+> Moedas selecionadas: *Bitcoin, Ethereum, XRP (Ripple), Litecoin, Bitcoin Cash, Cardano, Polkadot, Chainlink, Dogecoin, Polygon, Uniswap, Solana, TRON, Stellar Lumens, Avalanche, Shiba Inu, Filecoin, Algorand, VeChain, Tezos, EOS.*
+
+Resultado da Otimização de parâmetros - 
+
+**Tabela 1: 10 Valores de  $(N,x_{days})$ com menores MSE entre as principais 20 criptomoedas**
+| Média MSE  | 0.014484 | 0.014487 | 0.014487 | 0.014487 | 0.014488 | 0.014489 | 0.014490 | 0.014491 | 0.014494 | 0.014494 |
+|------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
+| N          | 62       | 59       | 69       | 60       | 61       | 70       | 64       | 58       | 63       | 71       |
+| x_days     | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 1        |
+
+Percebe-se que para essa etratégia, o período mais eficaz de trading foi de 1 dia para cada operação. Além disso, considerar em torno de 1 mês para realizar a média dos retornos mostrou-se mais eficaz.
 
 # Etapa 2
 
