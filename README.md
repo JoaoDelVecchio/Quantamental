@@ -92,6 +92,8 @@ Para valores altos de T estamos provavelmente trabalhando com volatilidades meno
 
 A Aplicação desta estratégia foi feita [aqui](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Etapa%201/Estrat%C3%A9gia%2001)
 
+Realizei uma otimização para encontrar os melhores valores dos hiperparâmetros acima.
+
 
 # Etapa 2
 
