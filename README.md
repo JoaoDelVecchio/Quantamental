@@ -1,5 +1,6 @@
 Repositório do projeto para o desafio ITAU Quantamental.
-Autores: Bruno Franco, Jean Carlo amaral, João Matheus Del Vecchio.
+
+*Autores: Bruno Franco, Jean Carlo amaral, João Matheus Del Vecchio.*
 
 # Introdução
 
