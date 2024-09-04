@@ -121,6 +121,9 @@ O Objetivo da etapa 2 consiste, com base nos valores esperados calculados pela e
 ## **Estratégia 2.1**
 A estratégia 2.1 consiste em aplicar um algoritmo genético para encontrar a melhor alocação perncentual de capital num conjunto de criptomoedas determinado
 Para a aplicação desta estratégia, precisamos de: valor esperado do retorno do ativo e matriz de covariânvia entre os ativos.
+
+A estratégia está sendo implementada [aqui](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Etapa%202/Estrat%C3%A9gia%202.1).
+
 Lembrando:
 - **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
 - **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
