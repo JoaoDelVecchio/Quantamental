@@ -56,7 +56,7 @@ Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar 
 
 ### 1. **Introdução**
 
-Nesta etapa, nosso objetivo é estimar o *Retorno Esperado* e o *Risco Esperado* de uma determinada criptomoeda em um momento futuro $t$, utilizando as informações disponíveis até o instante $t-1$.
+Nesta etapa, nosso objetivo é estimar o *Retorno Esperado*, o *Risco Esperado* de uma determinada criptomoeda e a Covariância entre diferentes Criptomoedas em um momento futuro $t$, utilizando as informações disponíveis até o instante $t-1$.
 
 ## 2. **Estratégia 1.1**
 Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como $[t-p, t-1]$.
@@ -71,6 +71,10 @@ Analogamente, a variância do retorno (que representa o risco) é dada por:
 
 $$
 \sigma_t^2 = \frac{1}{N-1}\sum_{i= t-N}^{t-1} (R_i - \overline{R})^2
+$$
+
+$$
+Cov(R_x, R_y) = \frac{1}{N-1} \sum_{i=t-N}^{t-1} (R^y_i - m_y)(R^x_i - m_x)
 $$
 
 Importante lembrar que esse retorno é o logarítmico, embora ele seja muito próximo do retorno percentual para valores pequenos.
@@ -116,7 +120,7 @@ O Objetivo da etapa 2 consiste, com base nos valores esperados calculados pela e
 
 ## **Estratégia 2.1**
 A estratégia 2.1 consiste em aplicar um algoritmo genético para encontrar a melhor alocação perncentual de capital num conjunto de criptomoedas determinado
-
+Para a aplicação desta estratégia, precisamos de: valor esperado do retorno do ativo e matriz de covariânvia entre os ativos.
 Lembrando:
 - **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
 - **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
@@ -132,7 +136,7 @@ Relação entre ambos: $m = e^{\mu} - 1$ ,     $s^2 = e^{2\mu}(e^{\sigma^2} - 1)
 
 > Essa alteração deve ser feita em conjunto com a otimização de parâmetros da *Etapa 1*. Observe que inicialmente consideramos $x_{days} = 252$ e $N = maximo$.
 
-Assim,
+Assim, para encontrarmos o valor esperado de cada ativo:
 
 $$
 E[R_{t}] = \mu_t = 252 (\frac{1}{N} \sum_{i = t-N}^{t-1}{R_i}) = 252 \overline{R}
@@ -159,4 +163,14 @@ m_t = \prod_{i = t-N}^{t-1}{(1+r_i)^{\frac{252}{N}}} - 1
 $$
 
 Dessa forma, será este o valor esperado para uma certo criptomoeada que iremos utilizar na implementação.
+
+Além disso, a Matriz de Covariância é fácil de se calcular:
+
+$$
+Cov(r_x, r_y) = \frac{1}{N-1} \sum_{i=t-N}^{t-1} (r^y_i - m_y)(r^x_i - m_x)
+$$
+> Questionamento: Porque é assim?
+
+> Note que estamos a todo momento dependendo desse hiperparâmetro N, assim como na etapa 1
+
 # Etapa 3
