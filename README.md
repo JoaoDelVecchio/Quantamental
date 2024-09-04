@@ -90,7 +90,7 @@ Além disso, um pouco mais discreto, temoso hiperparâmetro que representa o int
 
 Para valores altos de T estamos provavelmente trabalhando com volatilidades menores. Entretanto, quanto maior o valor de T, menor será a nossa possibilidade de treinamento e backtesting pois menor será a nossa quantidade de dados disponíveis.
 
-A Aplicação desta estratégia foi feita [aqui]()
+A Aplicação desta estratégia foi feita [aqui](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Etapa%201/Estrat%C3%A9gia%2001)
 
 
 # Etapa 2
