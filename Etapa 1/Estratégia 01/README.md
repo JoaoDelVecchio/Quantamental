@@ -1,0 +1,10 @@
+Média MSE: 0.014484, N: 62, x_days: 1
+Média MSE: 0.014487, N: 59, x_days: 1
+Média MSE: 0.014487, N: 69, x_days: 1
+Média MSE: 0.014487, N: 60, x_days: 1
+Média MSE: 0.014488, N: 61, x_days: 1
+Média MSE: 0.014489, N: 70, x_days: 1
+Média MSE: 0.014490, N: 64, x_days: 1
+Média MSE: 0.014491, N: 58, x_days: 1
+Média MSE: 0.014494, N: 63, x_days: 1
+Média MSE: 0.014494, N: 71, x_days: 1
