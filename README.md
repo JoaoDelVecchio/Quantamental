@@ -1,6 +1,6 @@
 Repositório do projeto para o desafio ITAU Quantamental.
 
-*Autores: Bruno Franco, Jean Carlo amaral, João Matheus Del Vecchio.*
+*Autores: Bruno Franco, Jean Carlo Amaral, João Matheus Del Vecchio.*
 
 # Introdução
 
@@ -125,6 +125,8 @@ Para a aplicação desta estratégia, precisamos de: valor esperado do retorno d
 
 A estratégia está sendo implementada [aqui](https://github.com/JoaoDelVecchio/Quantamental/tree/main/Etapa%202/Estrat%C3%A9gia%202.1).
 
+Essa estratégia a alocação de portfolio financeiro é baseada na Teoria de Portfólio  Markowitz (Mean-Variance Portfolio Theory)  e assim tem como base o cálculo de retornos e covariâncias destes retornos. 
+
 Lembrando:
 - **Retorno Percentual**: $r_{t} = \frac{X_t - X_{t-1}}{X_{t-1}}$
 - **Retorno Logarítmico**: $R_t = \ln(r_t + 1)$
@@ -168,7 +170,7 @@ $$
 
 Dessa forma, será este o valor esperado para uma certo criptomoeada que iremos utilizar na implementação.
 
-Além disso, a Matriz de Covariância é fácil de se calcular:
+Além disso, a Matriz de Covariância Cov é fácil de se calcular:
 
 $$
 Cov(r_x, r_y) = \frac{1}{N-1} \sum_{i=t-N}^{t-1} (r^y_i - m_y)(r^x_i - m_x)
@@ -176,5 +178,31 @@ $$
 > Questionamento: Porque é assim?
 
 > Note que estamos a todo momento dependendo desse hiperparâmetro N, assim como na etapa 1
+
+Vamos considerar o vetor x como sendo o vetor contendo os pesos de cada ação no portifólio (porcentagem do capital total investido nesta).
+Tome que a quantidade de criptos utilizada no portifólio é 20.
+
+$$
+X = [w_1,w_2,...,w_i,..., w_{20}]^T
+$$
+
+O vetor m contem o retorno médio percentual anual esperado de cada cripto
+
+$$
+M = [m_1,..m_i,...,m_{20}]^T
+$$
+
+Temos que o valor esperado do retorno percentual do portifólio será:
+
+$$
+E[r_P] = E[\sum_{i=1}^{20}{w_i r_i}] = \sum_{i=1}^{20}{w_i m_i} = \langle X, M \rangle
+$$
+
+Além disso, o risco desse nosso portifólio é:
+
+$$
+s_P = \sqrt{\sum{w_i^2 s_i^2}  +\sum{\sum_{i \neq j}{2 w_i w_j Cov_{i,j}}}} = \sqrt{X^T * Cov * X}
+$$
+
 
 # Etapa 3
