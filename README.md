@@ -84,6 +84,8 @@ Mas falando sério, as principais complicações que vejo no projeto são:
 * A complexidade de se criar um algoritmo de LSTM vai ser enorme. Principalmente porque é possível que algumas partes nós teremos que implementar na mão, uma vez que nosso método científico é meio específico a fim de evitar overfitt e trazer resultados mais robustos
 * A volatilidade ainda me é uma dúvida, não sei se o ideal seria adicionar um modelo de previsão para ela ou o que. Para contornar esse problema sugiro começarmos primeiro do mais simples.
 
+
+> **Mas e caso dê ruim?** - Esse relatorio está estrutural de tal modo que, para cada etapa são descritos possíveis modos de se fazer acontecer, do mais simples ao mais difícil. Nossa fuga caso algo de errado será sempre retornar para o método mais simples.
 ## Hasta la vista, Cripto
 
 Como ideia de design e personalidade do nosso "Algoritimo", sugiro que o nome dele seja **LSTMinator**. Como referência ao querido e famoso Android dos cinemas "Terminator". Além de possuir a referência/metáfora de ser um exterminador do futuro assim como nosso projeto tem a ideia de se baser no passado pra prever o futuro e todo esse blá blá blá e baboseira que parece divertido para a banca.
@@ -183,7 +185,7 @@ $$
 
 Total de Features =  $6N + 4$
 
-### Estrutura 5 - All In
+### Estrutura 5 - All In<sup>1</sup>
 
 * $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
 * $w$ últimos valores de volume de todo um conjunto de N moedas a serem analisadas.
@@ -195,19 +197,28 @@ Total de Features =  $6N + 4$
 
 
 $$
+
 R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N},
 V^{i-1}_{m_1}, ..., V^{i-w}_{m_1},..., V^{i-1}_{m_N}, ..., V^{i-w}_{m_N},\\
 D^{i-1}_{m_1}, ..., D^{i-w}_{m_1}, ..., D^{i-1}_{m_N}, ..., D^{i-w}_{m_N}, I^{i-1}_{m_k}, \mu_{ms}, \sigma_{ms}, \Delta_{ms} ) + \epsilon
+
 $$
 
 
 Total de Features =  $3Nw + 4$
 
+<sup>1</sup>    <small>Ainda existiria uma outra possível adição de complexidade e, a qual envolveria atributos climáticos, preço de petróleo, preço de energia renovável, entre outros.</small>
+## Estrutura escolhida
+
+Recomendo primeiro pensarmos em trabalhar com a **Estrutura 3** - *Simples criativa* e, caso dê tudo certo, migramos para uma estrutura mais complexa futuramente
+
+Entretanto, a criação das tabelas será independente da estrutura escolhida, com a motivação de evitar a necessidade de futura surubação para atualizar as tabelas com os dados necessários. Para isso, na proxima parte idei descrever o "banco de dados" que deveremos ter, contando com todas as features possíveis (se escolhermos uma estrutura mais simples basta não utilizar tudo).
+
+## Banco de Dados
 
 
 
-
-
+---
 
 
 
@@ -240,7 +251,9 @@ Total de Features =  $3Nw + 4$
     3. BackTest da estratégia para avaliar os resultados
 > Na verdade seria interessante que ambas as duas primeiras etapas por si só tivessem seu próprio backtest
 > uma vez que para cada uma dessas fases haverá uma modelagem própria que deve ser avaliada.
-> 
+>
+
+
 
 # Etapa 1
 
