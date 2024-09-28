@@ -55,21 +55,141 @@ A principal revisão de literatura é o aritigo ""Anticipating Cryptocurrency Pr
 Nos dois modelos iniciais ele utiliza a ideia de se basear nos dados das outras moedas também para a modelagem do preço futura de uma única moedas espcífica. Entretanto, ele não aplica essa ideia no modelo de LSTM, no qual ele se limita a utilizar o retorno de uma certa moeda X nos ultimos T dias para prever o valor futura. Além disso, o paper é bastante vago quanto a forma como eles otimizam seus hiperparâmetros e não parece ter um método rigoro, moderno ou científico para realizar a Ciência de Dados (evitando overfitt, incoerências, etc). 
 
 Portanto, observamos aí uma oportunidade de melhorar essa estratégia: adicionando novas features ao modelo, realizando um método científico mais rigoroso e moderno com base no livro "Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos" para a escolha de hiperparâmetros e fuga de overfit, e possívelmente realizando um sampleling mais complexo com Dollar Bars ou Unbalanced Dollars Bars.
-\
 
 
+## Etapas
+
+O projeto como um todo seguirá as etapas abaixo.
+
+- [ ] Coleta de Dados
+- [ ] Análise Exploratória
+- [ ] Tratamento dos Dados
+- [ ] Código do Modelo
+- [ ] Aplicação do Modelo
+- [ ] Backtesting
+- [ ] Análise dos Resultados
+- [ ] Melhorias
 
 
+## Cronograma
+
+## Desafios e Problemas
+
+Principal desafio é se isso realmente tem potencial de funcionar ou vai dar tudo errado kkkkk
+
+Mas falando sério, as principais complicações que vejo no projeto são:
+
+* A maior parte das criptomoedas são extremamente recentes, dificultando usar dados muito antigos
+* A dimensionalidade do modelo pode estar muito grande devido a essa hipotese de adicionar os valores de todas as moedas como features.
+* A complexidade de se criar um algoritmo de LSTM vai ser enorme. Principalmente porque é possível que algumas partes nós teremos que implementar na mão, uma vez que nosso método científico é meio específico a fim de evitar overfitt e trazer resultados mais robustos
+* A volatilidade ainda me é uma dúvida, não sei se o ideal seria adicionar um modelo de previsão para ela ou o que. Para contornar esse problema sugiro começarmos primeiro do mais simples.
+
+## Hasta la vista, Cripto
+
+Como ideia de design e personalidade do nosso "Algoritimo", sugiro que o nome dele seja **LSTMinator**. Como referência ao querido e famoso Android dos cinemas "Terminator". Além de possuir a referência/metáfora de ser um exterminador do futuro assim como nosso projeto tem a ideia de se baser no passado pra prever o futuro e todo esse blá blá blá e baboseira que parece divertido para a banca.
 
 
+# 2. Dados
 
+## Panorama Geral e Contextualização
 
+A parte de coleta de dados consiste em coletarmos os dados (quem diria né) necessários para a aplicação do modelo. Os dados que precisamos coletar são diretamente dependentes dos atributos que iremos considerar para a função objetivo.
 
+Desse modo, nesse capítulo será dito quais são as tabelas que a equipe de dados terá que criar e tratar para serem usadas pela equipe de código.
 
+## Estruturas de Atributos
 
+Como possibilidades de atributos a se considerar no modelo, temos 4 estruturas, que aqui estão enunciadas da ordem de menos complexa para mais complexa.
 
+### Estrutura 1 - Simples
 
+  * $w$ últimos Retornos Logaritmos da moeda a ser analisada.
+  
+Ou seja, nessa estrutura estamos supondo que o valor esperado do nosso Retorno Logarítmo para certo dia de uma certa moeda $m_k$ será uma função dos $w$ últimos Retornos Logaritmos dessa moeda $m$
 
+$$
+R^i_{m_k} = f(R^{i-1}_{m_k}, R^{i-2}_{m_k}, ..., R^{i-w}_{m_k}) + \epsilon
+$$
+
+Numero total de atributos =  $w$
+
+### Estrutura 2 - Simples com cerejinha
+
+  * $w$ últimos Retornos Logaritmos da moeda a ser analisada.
+  * $w$ últimos valores de volume da moeda a ser analisada.
+  * $w$ últimos valores em dólares de transações da moeda a ser analisada.
+  * idade da moeda
+  
+Ou seja, nessa estrutura estamos supondo que o valor esperado do nosso Retorno Logarítmo para certo dia de uma certa moeda $m_k$ será uma função dos $w$ últimos Retornos Logaritmos dessa moeda $m$
+
+$$
+R^i_{m_k} = f(R^{i-1}_{m_k},..., R^{i-w}_{m_k}, V^{i-1}_{m_k}, ..., V^{i-w}_{m_k},  D^{i-1}_{m_k}, ..., D^{i-w}_{m_k}, I^{i-1}_{m_k}) + \epsilon
+$$
+
+Total de Features =  $3 w + 1$
+
+### Estrutura 3 - Simples criativa
+
+* $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
+* Idade da moeda
+
+$$
+R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_k}, ..., R^{i-w}_{m_k}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N}, I^{i-1}_{m_k}) + \epsilon
+$$
+
+Total de Features =  $Nw + 1$
+
+### Estrutura 4 - Simples criativa e com cerejinha
+
+* $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
+* $w$ últimos valores de volume da moeda a ser analisada.
+* $w$ últimos valores em dólares de transações da moeda a ser analisada.
+* Idade da moeda
+
+$$
+R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_k}, ..., R^{i-w}_{m_k}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N}, \\
+V^{i-1}_{m_k}, ..., V^{i-w}_{m_k},  D^{i-1}_{m_k}, ..., D^{i-w}_{m_k}, I^{i-1}_{m_k}) + \epsilon
+$$
+
+Total de Features =  $(N+2)w + 1$
+
+### Estrutura 4 -  Alternativa
+
+  * Média dos $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
+  * Desvio padrão dos $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
+  * Média dos $w$ últimos valores de volume de todo um conjunto de N moedas a serem analisadas.
+  * Desvio padrão dos $w$ últimos valores de volume de todo um conjunto de N moedas a serem analisadas.
+  * Média dos $w$ últimos valores em dólares de transações de todo um conjunto de N moedas a serem analisadas.
+  * Desvio Padrão dos $w$ últimos valores em dólares de transações de todo um conjunto de N moedas a serem analisadas.
+  * Média do Market Share dessa moeda dos ultimos $w$ dias
+  * Desvio Padrão do Market Share dessa moeda dos ultimos $w$ dias
+  * Trend do Market Share dessa moeda dos ultimos $w$ dias
+  * Idade da moeda
+  
+$$
+R^i_{m_k} = f(\mu^{R}_{m_1}, \sigma^{R}_{m_1}, ..., \mu^{R}_{m_N},\sigma^{R}_{m_N}, ..., \mu^{V}_{m_1}, \sigma^{V}_{m_1},..., \mu^{V}_{m_N}, \sigma^{V}_{m_N},\\  \mu^{D}_{m_1}, \sigma^{D}_{m_1},..., \mu^{D}_{m_N}, \sigma^{D}_{m_N},\\
+ \mu_{ms}, \sigma_{ms}, \Delta_{ms}, I^{i-1}_{m_k} ) + \epsilon
+$$
+
+Total de Features =  $6N + 4$
+
+### Estrutura 5 - All In
+
+* $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
+* $w$ últimos valores de volume de todo um conjunto de N moedas a serem analisadas.
+* $w$ últimos valores em dólares de transações de todo um conjunto de N moedas a serem analisadas.
+* Idade da moeda
+* Média do Market Share dessa moeda dos ultimos $w$ dias
+* Desvio Padrão do Market Share dessa moeda dos ultimos $w$ dias
+* Trend do Market Share dessa moeda dos ultimos $w$ dias
+
+$$
+R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N},
+V^{i-1}_{m_1}, ..., V^{i-w}_{m_1},..., V^{i-1}_{m_N}, ..., V^{i-w}_{m_N},\\
+D^{i-1}_{m_1}, ..., D^{i-w}_{m_1}, ..., D^{i-1}_{m_N}, ..., D^{i-w}_{m_N}, I^{i-1}_{m_k}, \mu_{ms}, \sigma_{ms}, \Delta_{ms} ) + \epsilon
+$$
+
+Total de Features =  $3Nw + 4$
 
 
 
