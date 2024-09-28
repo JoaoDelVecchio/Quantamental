@@ -208,13 +208,46 @@ $$
 Total de Features =  $3Nw + 4$
 
 <sup>1</sup>    <small>Ainda existiria uma outra possível adição de complexidade e, a qual envolveria atributos climáticos, preço de petróleo, preço de energia renovável, entre outros.</small>
+
 ## Estrutura escolhida
 
 Recomendo primeiro pensarmos em trabalhar com a **Estrutura 3** - *Simples criativa* e, caso dê tudo certo, migramos para uma estrutura mais complexa futuramente
 
 Entretanto, a criação das tabelas será independente da estrutura escolhida, com a motivação de evitar a necessidade de futura surubação para atualizar as tabelas com os dados necessários. Para isso, na proxima parte idei descrever o "banco de dados" que deveremos ter, contando com todas as features possíveis (se escolhermos uma estrutura mais simples basta não utilizar tudo).
 
+## Maldição da Dimensionalidade
+
+## Etapas
+
+- [ ] Coleta do "Banco Dados"
+- [ ] Análise Exploratória
+- [ ] Tratamento
+
 ## Banco de Dados
+
+* Precisamos de uma tabela para cada uma das N moedas escolhidas
+* Cada uma dessas tabelas deve conter linhas que representem um certo dia da criptomoeda em específico.
+* Cada uma dessas linhas deve conter as seguintes colunas, nessa ordem:
+    * $Nw$ colunas contendo os preços de cada um dos últimos $w$ dias de todas as N moedas que iremos considerar.
+    * $Nw$ colunas contendo o retorno logaritmo e cada um dos ultimos $w$ dias de todas as N moedas que iremos considerar.
+    * $Nw$ colunas contendo os volumes de cada um dos últimos $w$ dias de todas as N moedas que iremos considerar.
+    * $Nw$ colunas contendo os valores transacionados em Dolar de cada um dos últimos $w$ dias de todas as N moedas que iremos considerar.
+    * Uma coluna contendo a média do market share da criptomoeda dos últimos $w$ dias.
+    * Uma coluna contendo o desvio padrão do market share da criptomoeda dos últimos $w$ dias.
+    * Uma coluna contendo s trend (final menos inicial) do market share da criptomoeda dos últimos $w$ dias.
+    * Uma coluna contendo a idade atual em dias da criptomoeda em questão
+    * Como ultima coluna, sendo essa nossa coluna **alvo**: O valor do Retorno Logaritmo daquele dia em específico.
+
+A escolha de N vai ser com base no que a equipe de dados achar mais importante.
+
+## Análise Exploratória
+
+## Tratamento
+
+## Desafios
+
+## Aperfeiçoamento
+
 
 
 
