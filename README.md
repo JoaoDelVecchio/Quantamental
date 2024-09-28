@@ -1,28 +1,6 @@
-Repositório do projeto para o desafio ITAU Quantamental.
+Projeto Quant.
 
 *Autores: Bruno Franco, Jean Carlo Amaral, João Matheus Del Vecchio.*
-
-# Introdução
-
-1. Queremos fazer um projeto na área de criptomoedas
-    1. Vantagens: 
-        * Ganhamos pontos por criatividade; 
-        * Mercado com alto potencial de ganho; 
-        * Papers na área que apresentam bons resultados;
-    2. Desvantagens: 
-        * Dificuldade em fazer backtest;
-            * "Todas" estratégias geram retornos positivos;
-            * Pouquíssima base de dados: boa parte das moedas começaram a existir em 2014 pra frente;
-        * Alta volatilidade, tornando previsões imprecisas;
-        * Poucos papers na área em comparação com outros ativos;
-2. Projeto atualmente está definido em 3 fases
-    1. Forecasting do valor esperado de uma moeda e do seu risco;
-    2. Montagem de portfólio com várias moedas que otimize a utilidade da estratégia;
-    3. BackTest da estratégia para avaliar os resultados
-> Na verdade seria interessante que ambas as duas primeiras etapas por si só tivessem seu próprio backtest
-> uma vez que para cada uma dessas fases haverá uma modelagem própria que deve ser avaliada.
-> 
-Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar algum algoritmo de **Filtering** entre a etapa 1 e a etapa 2. A ideia é que filtrar os valores esperados ajudaria a lidar com a alta volatilidade do mercado de CryptoMoedas
 
 # Referências
 
@@ -52,6 +30,85 @@ Além disso, para ganhar pontos em *inovação e conceito*, gostaria de aplicar 
 
 ### Sites
 * [Awesome Systematic Trading Repository](https://github.com/paperswithbacktest/awesome-systematic-trading.git)
+
+
+
+
+# 1. Fundamentação e Estrutura
+
+O projeto tem como objetivo criar uma estratégia quantitativa de investimento aplicada no mercado de criptomoedas, utilizando de Redes Neurais com arquiteturas LSTM para a predição do retorno de cada ativo e da teoria de portifólio de Markowitz para a construção de uma carteira otimizada.
+
+## Tese
+
+O mercado de Criptomoedas possui duas características singulares que o diferencia dos outros tipos de ativos financeiros: **alta** **volatilidade** dos preços e **alta** **correlação** entre as principais moedas. 
+
+A primeira característica implica em uma dificuldade inerente em se utilizar de modelos estatísticos e econometricos bem estabelecidos, como estratégias de Média Móvel, Trend Following ou Reversão a Média para a predição do retorno de Criptomoedas, uma vez que esses modelos econometricos baseados em regressão são extremamente dependentes da linearidade dessas características, porém a alta volatilidade nos dá indícios de uma dependência não linear entre os dados passados e o alvo futuro. Desse modo, temos a hipótese de que, para o mercado de Criptomoedas, a utilização de modelos de Machine Learning mais complexos não é apenas interessante, mas **decisiva** e **fundamental** para uma estratégia quantitativa eficiente nesse setor.
+
+A respeito da segunda, podemos elaborar a tese de que, para a predição mais efetiva do valor esperado de uma criptomoeda, devemos levar em consideração dados e informações das outras semelhantes para a modelagem do problema.
+
+Além disso, podemos hipotetizar uma possível dependencia entre o preço das Criptomoedsa e fatores que influênciam a atividade de mineiração de Bitcoin, como preço de óleo e gás, ou custo de energia nos países chaves para a mineração, ou catástrofes climáticas de escopo global.
+
+## Revisão da Literatura
+
+A principal revisão de literatura é o aritigo ""Anticipating Cryptocurrency Prices Using Machine Learning" que utiliza de 3 modelos de Machine Learning para prever retorno de uma carteira de criptomoedas, sendo um desses modelos uma Rede Neural com Arquitetura LSTM. 
+
+Nos dois modelos iniciais ele utiliza a ideia de se basear nos dados das outras moedas também para a modelagem do preço futura de uma única moedas espcífica. Entretanto, ele não aplica essa ideia no modelo de LSTM, no qual ele se limita a utilizar o retorno de uma certa moeda X nos ultimos T dias para prever o valor futura. Além disso, o paper é bastante vago quanto a forma como eles otimizam seus hiperparâmetros e não parece ter um método rigoro, moderno ou científico para realizar a Ciência de Dados (evitando overfitt, incoerências, etc). 
+
+Portanto, observamos aí uma oportunidade de melhorar essa estratégia: adicionando novas features ao modelo, realizando um método científico mais rigoroso e moderno com base no livro "Advances in Financial Machine Learning. LOPEZ DE PRADO, Marcos" para a escolha de hiperparâmetros e fuga de overfit, e possívelmente realizando um sampleling mais complexo com Dollar Bars ou Unbalanced Dollars Bars.
+\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Introdução
+
+1. Queremos fazer um projeto na área de criptomoedas
+    1. Vantagens: 
+        * Ganhamos pontos por criatividade; 
+        * Mercado com alto potencial de ganho; 
+        * Papers na área que apresentam bons resultados;
+    2. Desvantagens: 
+        * Dificuldade em fazer backtest;
+            * "Todas" estratégias geram retornos positivos;
+            * Pouquíssima base de dados: boa parte das moedas começaram a existir em 2014 pra frente;
+        * Alta volatilidade, tornando previsões imprecisas;
+        * Poucos papers na área em comparação com outros ativos;
+2. Projeto atualmente está definido em 3 fases
+    1. Forecasting do valor esperado de uma moeda e do seu risco;
+    2. Montagem de portfólio com várias moedas que otimize a utilidade da estratégia;
+    3. BackTest da estratégia para avaliar os resultados
+> Na verdade seria interessante que ambas as duas primeiras etapas por si só tivessem seu próprio backtest
+> uma vez que para cada uma dessas fases haverá uma modelagem própria que deve ser avaliada.
+> 
 
 # Etapa 1
 
