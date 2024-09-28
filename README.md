@@ -107,9 +107,11 @@ Como possibilidades de atributos a se considerar no modelo, temos 4 estruturas, 
   
 Ou seja, nessa estrutura estamos supondo que o valor esperado do nosso Retorno Logarítmo para certo dia de uma certa moeda $m_k$ será uma função dos $w$ últimos Retornos Logaritmos dessa moeda $m$
 
+
 $$
 R^i_{m_k} = f(R^{i-1}_{m_k}, R^{i-2}_{m_k}, ..., R^{i-w}_{m_k}) + \epsilon
 $$
+
 
 Numero total de atributos =  $w$
 
@@ -122,9 +124,11 @@ Numero total de atributos =  $w$
   
 Ou seja, nessa estrutura estamos supondo que o valor esperado do nosso Retorno Logarítmo para certo dia de uma certa moeda $m_k$ será uma função dos $w$ últimos Retornos Logaritmos dessa moeda $m$
 
+
 $$
 R^i_{m_k} = f(R^{i-1}_{m_k},..., R^{i-w}_{m_k}, V^{i-1}_{m_k}, ..., V^{i-w}_{m_k},  D^{i-1}_{m_k}, ..., D^{i-w}_{m_k}, I^{i-1}_{m_k}) + \epsilon
 $$
+
 
 Total de Features =  $3 w + 1$
 
@@ -133,9 +137,11 @@ Total de Features =  $3 w + 1$
 * $w$ últimos Retornos Logaritmos de todo um conjunto de N moedas a serem analisadas.
 * Idade da moeda
 
+
 $$
 R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_k}, ..., R^{i-w}_{m_k}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N}, I^{i-1}_{m_k}) + \epsilon
 $$
+
 
 Total de Features =  $Nw + 1$
 
@@ -146,10 +152,12 @@ Total de Features =  $Nw + 1$
 * $w$ últimos valores em dólares de transações da moeda a ser analisada.
 * Idade da moeda
 
+
 $$
 R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_k}, ..., R^{i-w}_{m_k}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N}, \\
 V^{i-1}_{m_k}, ..., V^{i-w}_{m_k},  D^{i-1}_{m_k}, ..., D^{i-w}_{m_k}, I^{i-1}_{m_k}) + \epsilon
 $$
+
 
 Total de Features =  $(N+2)w + 1$
 
@@ -165,11 +173,13 @@ Total de Features =  $(N+2)w + 1$
   * Desvio Padrão do Market Share dessa moeda dos ultimos $w$ dias
   * Trend do Market Share dessa moeda dos ultimos $w$ dias
   * Idade da moeda
-  
+
+ 
 $$
 R^i_{m_k} = f(\mu^{R}_{m_1}, \sigma^{R}_{m_1}, ..., \mu^{R}_{m_N},\sigma^{R}_{m_N}, ..., \mu^{V}_{m_1}, \sigma^{V}_{m_1},..., \mu^{V}_{m_N}, \sigma^{V}_{m_N},\\  \mu^{D}_{m_1}, \sigma^{D}_{m_1},..., \mu^{D}_{m_N}, \sigma^{D}_{m_N},\\
  \mu_{ms}, \sigma_{ms}, \Delta_{ms}, I^{i-1}_{m_k} ) + \epsilon
 $$
+
 
 Total de Features =  $6N + 4$
 
@@ -183,11 +193,13 @@ Total de Features =  $6N + 4$
 * Desvio Padrão do Market Share dessa moeda dos ultimos $w$ dias
 * Trend do Market Share dessa moeda dos ultimos $w$ dias
 
+
 $$
 R^i_{m_k} = f(R^{i-1}_{m_1}, ..., R^{i-w}_{m_1}, ..., R^{i-1}_{m_N}, ..., R^{i-w}_{m_N},
 V^{i-1}_{m_1}, ..., V^{i-w}_{m_1},..., V^{i-1}_{m_N}, ..., V^{i-w}_{m_N},\\
 D^{i-1}_{m_1}, ..., D^{i-w}_{m_1}, ..., D^{i-1}_{m_N}, ..., D^{i-w}_{m_N}, I^{i-1}_{m_k}, \mu_{ms}, \sigma_{ms}, \Delta_{ms} ) + \epsilon
 $$
+
 
 Total de Features =  $3Nw + 4$
 
