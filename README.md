@@ -73,7 +73,10 @@ O projeto como um todo seguirá as etapas abaixo.
 
 ## Cronograma
 
+- [ ] Delegar responsável pelas seguintes áreas: Coleta de Dados e Código do Modelo; Além de delimitar uma data limite para essas tarefas
+
 ## Desafios e Problemas
+
 
 Principal desafio é se isso realmente tem potencial de funcionar ou vai dar tudo errado kkkkk
 
@@ -262,12 +265,70 @@ Por fim, essa é uma etapa que vai da liberdade criativa da equipe em gerar insi
 
 * Falta de dados de grande parte das moedas
 * Alta dimensionalidade das estruturas propostas
+* Dificuldade de se conseguir os dados em questão
 
 
 ## Aperfeiçoamento
 
+Aqui é o famoso: *se tudo ficar pronto rápido, temos um super trunfo final*
+
+## Sample Bars
+
+Tudo que vou escrever aqui é baseado no livro do Lopez de Prado.
+
+* Nem sempre é interessante utilizar dias como bars (conjunto de informação)
+* Em vez disso, uma alternativa é agrupar nosso conjunto de informação com base em uma quantidade de dolares tradados específico
+* Desse modo, a cada $10^5$ Dólares, por exemplo, criariamos uma sample com seus atributos próprios: Preço, Retorno, Idade, etc.
+* Isso serve para que cada sample represente mais possivelmente uma quantidade de informação existente no mercado. Duas samples diferentes nos "garante" que ocorreu nova informação
+* A desvantagem é que teremos potencialmente menos "samples" no total, além de dificultar bastante a criação do banco de dados
 
 
+# 3. Método Científico
+
+## Panorama Geral e Contextualização
+
+Um dos defeitos do artigo que usamos como base é o fraco método científico dele. Os hiperparâmtros foram gerados a moda caralha, desse modo os resultados foram jogados pro leitor, gerando pouca confiança.
+
+É estritamente necessário termos uma processo bem estabelecido que reduza o overfit do nosso modelo, e o torne o mais verdadeiro possível, de tal forma que vamos poder confiar no resultado encontrado.
+
+Mas o que eu quero dizer com método científico? Eu quero dizer sobre as etapas de ciencia de dados que vamos fazer para: Tunar Hiperparâmetros, Treinar o modelo e fazer o backtesting;
+
+## Principais Modelos
+
+Os possíveis modelos saem desse fluxo de decisão:
+
+![alt text](<Apresentação sem título.png>)
+
+
+Modelo mais simples: Modelo 4 e Modelo 1
+Modelo mais complexo: Modelo 3
+
+## Modelo Escolhido
+
+Embora tenha todo aquele papinho de se escolher o modelo mais simples inicialmente, o *Modelo 3* é o que almejamos. Logo pode ser que inicialmente a gente construa um código para o modelo 1 ou 4 e então adaptemos para o modelo 3.
+
+Entretando, vale explicar o que está acontecendo de fato nesse modelo
+
+### Etapas do Modelo 3
+
+* Vamos supor que estamos no dia i, e queremos prever o valor do retorno desse dia i.
+* Primeiro, vamos selecionar os últimos W dias anteriores a i.
+* Cada um desses W dias anteriores a i possui seus atributos próprio de acordo com a estrutura definida na etapa de Dados.
+* Então temos que trabalhar com uma tabela de W linhas e C colunas.
+* Dessa tabela inicial, vamos criar $\gamma$ novos conjuntos de dados, cada um com um número de linhas $n < W$ linhas. Esses conjuntos serão criados por meio de Bagging, que é uma palavra
+
+### Diagrama
+
+## Desafios
+
+
+# 4. Código
+
+## Panorama Geral e Contextualização
+
+## Benchmark
+
+## Boa sorte!
 
 
 ---
@@ -282,7 +343,7 @@ Por fim, essa é uma etapa que vai da liberdade criativa da equipe em gerar insi
 
 
 
-
+# IGNORAR A PARTIR DAQUI
 
 # Introdução
 
