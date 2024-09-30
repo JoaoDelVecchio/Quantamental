@@ -217,6 +217,10 @@ Entretanto, a criação das tabelas será independente da estrutura escolhida, c
 
 ## Maldição da Dimensionalidade
 
+Esse acredito eu que vai ser o maior problema do projeto. No artigo que estamos usando como base, a todo momento que ele fazia um modelo de ML com dimensionalidade muito alta alguma coisa estava errado. No próprio modelo mesmo dele foi utilzado só os valores de Retorno daquela moeda como features.
+
+Como uma proposta de solução, sugiro que a gente estude técnicas como redução de dimensionalidade em problemas de aprendizado de máquina, como por exemplo a técnica LASSO. Vou ser bem honesto aqui, eu não faço bulhufas de ideia de como isso funciona, se e que fuciona, mas pode ser uma boa forma de tentar lidar com esse problema.
+
 ## Etapas
 
 - [ ] Coleta do "Banco Dados"
@@ -242,11 +246,26 @@ A escolha de N vai ser com base no que a equipe de dados achar mais importante.
 
 ## Análise Exploratória
 
+Nessa seção a equipe de Dados vai atualizando com o que foi feito.
+
+Mas em geral, a ideia da nossa Análise Exploratória é gerar algumas observações que corroborem com a nossa tese, como a alta correlação entre os retornos dos ativos, etc.
+
+Por fim, essa é uma etapa que vai da liberdade criativa da equipe em gerar insights.
+
 ## Tratamento
+
+* Garantir que os dados estejam normalizados
+* Lidar com dados nulos ou não existentes
+* Lidar com possíveis Outliers
 
 ## Desafios
 
+* Falta de dados de grande parte das moedas
+* Alta dimensionalidade das estruturas propostas
+
+
 ## Aperfeiçoamento
+
 
 
 
