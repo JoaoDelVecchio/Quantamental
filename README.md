@@ -313,69 +313,56 @@ Entretando, vale explicar o que está acontecendo de fato nesse modelo
 
 * Vamos supor que estamos no dia i, e queremos prever o valor do retorno desse dia i.
 * Primeiro, vamos selecionar os últimos W dias anteriores a i.
-* Cada um desses W dias anteriores a i possui seus atributos próprio de acordo com a estrutura definida na etapa de Dados.
+* Cada um desses W dias anteriores a i possui seus atributos próprio de acordo com a estrutura definida na etapa de Dados. Além do valor alvo que é o retorno logaritmo do dia.
 * Então temos que trabalhar com uma tabela de W linhas e C colunas.
-* Dessa tabela inicial, vamos criar $\gamma$ novos conjuntos de dados, cada um com um número de linhas $n < W$ linhas. Esses conjuntos serão criados por meio de Bagging, que é uma palavra
+* Dessa tabela inicial, vamos criar $\gamma$ novos conjuntos de dados, cada um com um número de linhas $n < W$ linhas. Esses conjuntos serão criados por meio de Bagging, que é uma palavra chique para a tecnica de: selecionar aleatoriamente n linhas do meu dataset original e criar um novo e então fazer isso repetidamente, com reposição, até termos $\gamma$ novas tabelas.
+  
+  > Talvez isso acarrete em algumas incoerência na hora de fazer o Purge Cross-Validation, mas iremos tentar contornar isso posteriormente.
 
-### Diagrama
+![1](image-1.png)
+
+* Agora vamos para a etapa de Purge K-Fold Cross Validation
+* Em suma, para cada tabela criada pelo bagging vamos criar K novas tabelas idênticas.
+* Entretanto, para cada uma destas novas tabelas, 10% delas será destinado como Validation Set, enquanto os outros 90% será o Training Set.
+* O Validation Set de todas as K tabelas deverá ser diferente (caso o seenhorito tenha rapidamente notado, isso implica em K = 10).
+* O ideal é que a primeira tabela terá os primeiros 10% elementos como validation set, a segunda tabela terá os segundo 10% e assim por diante
+
+>   Validation Set é o conjunto no qual vamos "testar" o modelo treinado pelo training set para cada um dos hiperparâmetros diferentes, para então escolhermos o melhor conjunto desses hiperp. possível.
+
+* Mas aqui vem o pulo do gato. Não podemos ter sobreposição, isso é, existe situações que o training set, por conter atributos dos ultimos 8 dias, irá conter os valores do validation set, o que geraria incongruência e overfitt.
+* Para isso, sempre que cirar uma dessas novas tabelas, garanta que não haverá sobreposição.
+
+  ![2](image-2.png)
+
+
+* Depois dessa etapa, com todas as tabelas construidas e delimitadas, vamos tunar os hipermarâmetros de cada tabela k de cada conjunto de $\gamma$. Desse modo, cada Fold terá K conjuntos de hiperparâmetros ótimos para o par Validation/Training Set específico.
+
+![3](image-3.png)
+
+
+* Por fim, treinamos cada tabela do Fold por meio do algoritmo do LSTM com seu conjunto de Hiperparâmetros ideal.
+* Para cada Fold então, calculamos o resultado do modelo para o nosso querido retorno no dia i. O resultado da previsão de cada Fold será a média dos resultados deste.
+* Depois, pegamos o resultado $\overline{\hat o_t}$ de cada um dos grupos de $\gamma$ e fazemos a média deles
+* Essa média será a predição final de nossá máquina  $\hat y$
+![4](image.png)
+
 
 ## Desafios
 
+* Montar cada uma das funções vai ser desafiador
+* Talvez Bagging seguido de CV não seja o ideal - E se fizermos o contrário?
 
 # 4. Código
 
 ## Panorama Geral e Contextualização
 
+Vamos utilizar uma arquitetura de rede neural chamada LSTM, que é basicamente uma rede neural com capacidade de memória a longo prazo, extremamente útil para modelos de séries temporal
+
 ## Benchmark
 
-## Boa sorte!
+Nosso Benchmark será tanto algum índice que ainda precisamos escolher quanto um modelo de econometria já bem estabelecido: Simple Moving Average SMA.
 
-
----
-
-
-
-
-
-
-
-
-
-
-
-# IGNORAR A PARTIR DAQUI
-
-# Introdução
-
-1. Queremos fazer um projeto na área de criptomoedas
-    1. Vantagens: 
-        * Ganhamos pontos por criatividade; 
-        * Mercado com alto potencial de ganho; 
-        * Papers na área que apresentam bons resultados;
-    2. Desvantagens: 
-        * Dificuldade em fazer backtest;
-            * "Todas" estratégias geram retornos positivos;
-            * Pouquíssima base de dados: boa parte das moedas começaram a existir em 2014 pra frente;
-        * Alta volatilidade, tornando previsões imprecisas;
-        * Poucos papers na área em comparação com outros ativos;
-2. Projeto atualmente está definido em 3 fases
-    1. Forecasting do valor esperado de uma moeda e do seu risco;
-    2. Montagem de portfólio com várias moedas que otimize a utilidade da estratégia;
-    3. BackTest da estratégia para avaliar os resultados
-> Na verdade seria interessante que ambas as duas primeiras etapas por si só tivessem seu próprio backtest
-> uma vez que para cada uma dessas fases haverá uma modelagem própria que deve ser avaliada.
->
-
-
-
-# Etapa 1
-
-### 1. **Introdução**
-
-Nesta etapa, nosso objetivo é estimar o *Retorno Esperado*, o *Risco Esperado* de uma determinada criptomoeda e a Covariância entre diferentes Criptomoedas em um momento futuro $t$, utilizando as informações disponíveis até o instante $t-1$.
-
-## 2. **Estratégia 1.1**
-Como primeira estratégia, adotamos uma abordagem simples onde o retorno esperado do ativo é calculado como a média dos retornos observados em um intervalo de tempo anterior, definido como $[t-p, t-1]$.
+O modelo de SMA está implementado e descrito a seguir:
 
 Essa estratégia baseia-se na *hipótese* de que o **retorno do ativo segue uma distribuição aproximadamente constante ao longo do tempo.** Portanto, o valor esperado dessa distribuição pode ser estimado pela média dos retornos passados.
 
@@ -429,12 +416,8 @@ Resultado da Otimização de parâmetros -
 
 Percebe-se que para essa etratégia, o período mais eficaz de trading foi de 1 dia para cada operação. Além disso, considerar em torno de 1 mês para realizar a média dos retornos mostrou-se mais eficaz.
 
-# Etapa 2
-### **Introdução**
-
 O Objetivo da etapa 2 consiste, com base nos valores esperados calculados pela etapa 1, alocar um determinado percentual de um capital C em um conjunto de n possíveis ativos financeiros de risco de modo a maximizar  a relação Retorno_ajustado/Risco.
 
-## **Estratégia 2.1**
 A estratégia 2.1 consiste em aplicar um algoritmo genético para encontrar a melhor alocação perncentual de capital num conjunto de criptomoedas determinado
 Para a aplicação desta estratégia, precisamos de: valor esperado do retorno do ativo e matriz de covariânvia entre os ativos.
 
@@ -519,5 +502,4 @@ $$
 s_P = \sqrt{\sum{w_i^2 s_i^2}  +\sum{\sum_{i \neq j}{2 w_i w_j Cov_{i,j}}}} = \sqrt{X^T * Cov * X}
 $$
 
-
-# Etapa 3
+# BackTest
