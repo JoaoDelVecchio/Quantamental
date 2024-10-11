@@ -272,7 +272,7 @@ Por fim, essa é uma etapa que vai da liberdade criativa da equipe em gerar insi
 
 Aqui é o famoso: *se tudo ficar pronto rápido, temos um super trunfo final*
 
-## Sample Bars
+### Sample Bars
 
 Tudo que vou escrever aqui é baseado no livro do Lopez de Prado.
 
