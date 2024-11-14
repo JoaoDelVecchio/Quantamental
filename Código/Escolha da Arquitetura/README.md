@@ -17,30 +17,9 @@ Métricas de desempenho:
 
 Para os dados analisados das arquiteturas, tinhamos 54.029512% como sendo subidas para BTC e 47.2190% sendo subidas para LTC.
 
-## Arquitetura -1
+## Baseline
 
 Considerar o próximo retorno como a média dos ultimos 14 retornos
-
-Para BTC:
-
-    * Precisão = 0.563291
-    * MAE = 0.031432
-    * Acurácia = 0.523008
-    * Precisão_25 = 0.597285
-
-Para LTC:
-
-    * Precisão = 0.466667
-    * MAE = 0.043989
-    * Acurácia = 0.504619
-    * Precisão_25 = 0.461538
-
-Média: 
-
-    * Pre_media = 0.514978
-    * Acc_media = 0.513813
-    * MAE_media = 0.037710
-    * Precisao_25_media = 0.52941
 
 ## Arquitetura SubZero
 
@@ -54,27 +33,6 @@ LSTM, 1 || Dropout 0.2 || Dense 1 || Otimizador Adam
 w = 50
 W = 80
 
-Para BTC:
-
-    * Precisão = 0.551515    
-    * MAE = 0.030731
-    * Acurácia = 0.495652
-    * Precisão_25 = 0.606335
-
-Para LTC:
-
-    * Precisão = 0.481043
-    * MAE = 0.042361
-    * Acurácia = 0.525761
-    * Precisão_25 = 0.488688
-
-Média: 
-
-    * Pre_media  = 0.5162789
-    * Acc_media  = 0.51070
-    * MAE_media  = 0.036546
-    * Precisao_25_media = 0.547511312
-
 ## Arquitetura 0
 
 *Arquitetura SubZero mas com 2 Features em vez de 1*
@@ -86,28 +44,6 @@ LSTM, 1 || Dropout 0.2 || Dense 1 || Otimizador Adam
 
 w = 50
 W = 80
-
-Para BTC:
-
-    - Precisão = 0.553459
-    - MAE = 0.030522
-    - Acurácia = 0.505543
-    - Precisão_25 = 0.588235
-
-Para LTC:
-
-    - Precisão = 0.501266
-    - MAE = 0.042678
-    - Acurácia = 0.575309
-    - Precisão_25 = 0.506787
-
-Média: 
-
-    - Pre_media = 0.527362471
-    - Acc_media = 0.540425939
-    - MAE_media = 0.03659983
-    - Precisao_25_media = 0.5475113
-
 
 ## Arquitetura 0.5
 
@@ -179,40 +115,19 @@ Média:
 
 *Arquitetura mais complexa, com duas camadas lstm e una batch normalization. Além disso temos 2 atributos*
 
-LSTM, 64, l2=0.001 || Drop 0.3 || Batch Norm || LSTM, 32 || Drop 0.3 || Dense 1 || Otimizador RMSProp 5e-3
+LSTM, 64|| Drop 0.3 || Batch Norm || LSTM, 32 || Drop 0.3 || Dense 1 || Otimizador RMSProp 1e-5
 
 - 2 Atributos, ROI e ROI_BTC
 - 300 epochs +  metodo de parada
 
 w = 14
 W = 250
-  
-Para BTC:
-
-    - Precisão = 
-    - MAE = 
-    - Acurácia = 
-    - Precisão_25 = 
-
-Para LTC:
-
-    - Precisão =
-    - MAE =
-    - Acurácia = 
-    - Precisão_25 = 
-
-Média: 
-
-    - Pre_media =
-    - Acc_media = 
-    - MAE_media = 
-    - Precisao_25_media = 
 
 ## Arquitetura 1.5
 
 *Arquitetura 1 mas com apenas 1 atributo*
 
-LSTM, 64 l2=0.001 || Drop 0.3 || Batch Norm || LSTM, 32 || Drop 0.3 || Dense 1 || Otimizador RMSProp 1e-3
+LSTM, 64 || Drop 0.3 || Batch Norm || LSTM, 32 || Drop 0.3 || Dense 1 || Otimizador RMSProp 1e-5
 
 - 1 Atributo
 - 300 epochs +  metodo de parada
@@ -244,14 +159,12 @@ Média:
 
 ## Arquitetura 2
 
-*Arquitetura 1 mas uma camada CNN anterior e uma camada densa ao fim, baseado no artigo que usei*
-
 CNN 15 || Pooling Layer 2 ||  LSTM 50 || Batch Norm || dropout 0.5 || Dense 128 || Batch Norm || Drop 0.2 || Dense 1 || Otimizador RMSProp 1e-3
 
 - 2 Atributos, ROI e ROI_BTC
 - 300 epochs +  metodo de parada
 
-w = 14
+w = 30
 W = 250
   
 Para BTC:
@@ -275,36 +188,4 @@ Média:
     - MAE_media = 
     - Precisao_25_media =
 
-## Arquitetura 3
-
-*Arquitetura 2 mas com apenas 64 neuronios na camada densa e apenas 1 atributo também*
-
-CNN 15 || Pooling Layer 2 || LSTM 50 || Batch Norm || dropout 0.5 || Dense 64 || Batch Norm || Drop 0.2 || Dense 1 || Otimizador RMSProp 1e-3
-
-- 1 Atributo
-- 300 epochs +  metodo de parada
-
-w = 14
-W = 250
-  
-Para BTC:
-
-    - Precisão = 
-    - MAE = 
-    - Acurácia = 
-    - Precisão_25 = 
-
-Para LTC:
-
-    - Precisão =
-    - MAE =
-    - Acurácia = 
-    - Precisão_25 = 
-
-Média: 
-
-    - Pre_media =
-    - Acc_media = 
-    - MAE_media = 
-    - Precisao_25_media == 
 
